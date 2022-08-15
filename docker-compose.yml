@@ -1,0 +1,42 @@
+# docker-compose.yml
+
+version: "3.9"
+services:
+
+  mongodb:
+    image: mongo:5.0.2
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_DATABASE=fr_db
+      # - MONGO_INITDB_ROOT_USERNAME=root
+      # - MONGO_INITDB_ROOT_PASSWORD=123456
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/mongodb
+
+  client:
+    container_name: client
+    build: ./client
+    env_file: ./client/.env
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - 8081:8081
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
+
+  server:
+    build: ./server
+      
+    depends_on:
+      - mongodb
+      - client
+    ports:
+      - '8080:8080'
+        
+volumes:
+  mongodb:
