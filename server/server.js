@@ -6,7 +6,7 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://solidsoftware.ru"
 };
 
 app.use(cors(corsOptions));
@@ -16,6 +16,8 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/static', express.static('public'))
 
 const db = require("./app/models");
 const Role = db.role;

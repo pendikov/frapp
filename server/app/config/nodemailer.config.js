@@ -6,7 +6,10 @@ const user = config.user;
 const pass = config.pass;
 
 const transport = nodemailer.createTransport({
-  service: "Gmail",
+  // service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: user,
     pass: pass,

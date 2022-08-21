@@ -111,11 +111,11 @@ exports.signin = (req, res) => {
         });
       }
 
-      if (user.status != "Active") {
-        return res.status(401).send({
-          message: "Pending Account. Please Verify Your Email!",
-        });
-      }
+      // if (user.status != "Active") {
+      //   return res.status(401).send({
+      //     message: "Pending Account. Please Verify Your Email!",
+      //   });
+      // }
 
       var token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400, // 24 hours
@@ -126,6 +126,16 @@ exports.signin = (req, res) => {
       for (let i = 0; i < user.roles.length; i++) {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
+
+  
+
+    // await execute(`docker exec -it ipsec-vpn-server ikev2.sh --addclient ${user.username}
+    // docker exec -it ipsec-vpn-server ikev2.sh --exportclient ${user.username}
+    // docker cp ipsec-vpn-server:/etc/ipsec.d/${user.username}.mobileconfig /tmp/mobileconfigs/
+    // `)
+
+    // res.download(`/tmp/mobileconfigs/${user.username}.mobileconfig`, `${user.username}.mobileconfig`)
+
       res.status(200).send({
         id: user._id,
         username: user.username,
@@ -156,3 +166,4 @@ exports.verifyUser = (req, res, next) => {
     })
     .catch((e) => console.log("error", e));
 };
+

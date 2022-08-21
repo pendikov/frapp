@@ -40,11 +40,11 @@ const App = () => {
           fr
         </Link>
         <div className="navbar-nav mr-auto">
-          <li className="nav-item">
+          {/* {currentUser && (<li className="nav-item">
             <Link to={"/home"} className="nav-link">
               Home
             </Link>
-          </li>
+          </li>)} */}
 
           {showModeratorBoard && (
             <li className="nav-item">
@@ -62,13 +62,13 @@ const App = () => {
             </li>
           )}
 
-          {currentUser && (
+          {/* {currentUser && (
             <li className="nav-item">
               <Link to={"/user"} className="nav-link">
                 User
               </Link>
             </li>
-          )}
+          )} */}
         </div>
 
         {currentUser ? (
@@ -107,7 +107,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path={["/profile", ]} component={Profile} />
-          <Route path="/user" component={BoardUser} />
+          {/* <Route path="/user" component={BoardUser} /> */}
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
           <Route path="/confirm/:confirmationCode" component={Welcome} />

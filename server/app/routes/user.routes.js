@@ -25,4 +25,21 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  app.get(
+    "/api/test/sendEmail",
+    [authJwt.verifyToken],
+    controller.sendEmail
+  );
+
+  app.get(
+    "/api/test/mobileconfig",
+    [authJwt.verifyToken],
+    controller.mobileconfig
+  );
+
+  app.get(
+    "/api/test/downloads/:download",
+    controller.downloads
+  );
 };
