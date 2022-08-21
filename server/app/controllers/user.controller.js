@@ -17,7 +17,17 @@ async function execute(command) {
 }
 
 exports.allAccess = (req, res) => {
-  res.status(200).send("FR VPN");
+  res.status(200).send(`
+  <h1><strong>FREE VPN FOR REAL</strong></h1>
+  <ol>
+  <li>заходим на сайт с телефона</li>
+  <li>регистрируемся и логинимся. скачиваем профайл</li>
+  <li>в настройках в самом вверху появится пункт — profile downloaded. заходим в него и устанавливаем скаченный профайл
+  </li>
+  <li>в настройках впн включить галочку connect on demand</li>
+  </ol>
+  `
+  );
 };
 
 exports.userBoard = (req, res) => {

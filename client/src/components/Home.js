@@ -28,7 +28,9 @@ const Home = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>{content}</h3>
+        {/* <h3>{content}</h3> */}
+        {/* <div dangerouslySetInnerHTML={{ __html: this.htmlDecode(content) }} /> */}
+        <img src="/floppa_sprite.jpg" alt="image" width={250} height={250}/>
       </header>
     </div>
   );
